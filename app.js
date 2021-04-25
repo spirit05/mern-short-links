@@ -35,7 +35,7 @@ async function start() {
           } else {
             console.log(`Running on port ${PORT}`)
         }
-        };
+        });
 
     } catch(e) {
         console.log('Server error', e.message);
