@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'prodaction') {
     })
 }
 
-const PORT = config.get('port') || 5000;
+const PORT = process.env.PORT || 5000;
 
 async function start() {
     try {
@@ -29,7 +29,13 @@ async function start() {
             useUnifiedTopology: true
         });
 
-        app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`));
+        app.listen(PORT, function(err) {
+          if (err) {
+            console.error(err)
+          } else {
+            console.log(`Running on port ${PORT}`)
+        }
+        };
 
     } catch(e) {
         console.log('Server error', e.message);
